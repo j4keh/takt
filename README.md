@@ -22,12 +22,14 @@ TAKT is built with TAKT itself (dogfooding).
 
 Choose one:
 
-- **Provider CLIs**: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Codex](https://github.com/openai/codex), [OpenCode](https://opencode.ai), [Cursor Agent](https://docs.cursor.com/), or [GitHub Copilot CLI](https://docs.github.com/en/copilot/github-copilot-in-the-cli) installed
+- **Provider CLIs**: [Codex](https://github.com/openai/codex), [OpenCode](https://opencode.ai), [Cursor Agent](https://docs.cursor.com/), or [GitHub Copilot CLI](https://docs.github.com/en/copilot/github-copilot-in-the-cli) installed
 - **Direct API**: Anthropic / OpenAI / OpenCode API Key (no CLI required)
 
 Optional:
 
 - [GitHub CLI](https://cli.github.com/) (`gh`) — for `takt #N` (GitHub Issue tasks)
+
+> **OAuth and API key usage:** Whether OAuth or API key access is permitted varies by provider and use case. Check each provider's terms of service before using TAKT.
 
 ## Quick Start
 

@@ -22,12 +22,14 @@ TAKT は TAKT 自身で開発しています（ドッグフーディング）。
 
 次のいずれかが必要です。
 
-- **プロバイダー CLI**: [Claude Code](https://docs.anthropic.com/en/docs/claude-code)、[Codex](https://github.com/openai/codex)、[OpenCode](https://opencode.ai)、[Cursor Agent](https://docs.cursor.com/)、[GitHub Copilot CLI](https://docs.github.com/en/copilot/github-copilot-in-the-cli) のいずれか
+- **プロバイダー CLI**: [Codex](https://github.com/openai/codex)、[OpenCode](https://opencode.ai)、[Cursor Agent](https://docs.cursor.com/)、[GitHub Copilot CLI](https://docs.github.com/en/copilot/github-copilot-in-the-cli) のいずれか
 - **API Key 直接利用**: Anthropic / OpenAI / OpenCode の API Key があれば CLI は不要です
 
 任意:
 
 - [GitHub CLI](https://cli.github.com/) (`gh`) — `takt #N` で GitHub Issue を使う場合に必要です
+
+> **OAuth・API キーの利用について:** OAuth や API キーが利用可能かどうかはプロバイダーや用途によって異なります。TAKT を利用する際には、各プロバイダーの利用規約をご確認ください。
 
 ## クイックスタート
 
