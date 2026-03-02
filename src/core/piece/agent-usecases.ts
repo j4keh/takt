@@ -291,7 +291,7 @@ export async function decomposeTask(
     provider: options.provider,
     allowedTools: [],
     permissionMode: 'readonly',
-    maxTurns: 2,
+    maxTurns: 4,
     outputSchema: loadDecompositionSchema(maxParts),
   });
 
@@ -331,7 +331,7 @@ export async function requestMoreParts(
     provider: options.provider,
     allowedTools: [],
     permissionMode: 'readonly',
-    maxTurns: 2,
+    maxTurns: 4,
     outputSchema: loadMorePartsSchema(maxAdditionalParts),
   });
 
