@@ -57,7 +57,9 @@ jobs:
         id: merge
         run: |
           git fetch origin main
-          if git merge origin/main --no-edit 2>/dev/null; then
+          # --no-commit --no-ff: コンフリクトの有無にかかわらず常にマージ状態を保持する
+          # これにより最後の git commit が必ずマージコミット（親2つ）を作る
+          if git merge --no-commit --no-ff origin/main 2>/dev/null; then
             echo "conflicts=false" >> "$GITHUB_OUTPUT"
           else
             echo "conflicts=true" >> "$GITHUB_OUTPUT"
@@ -224,6 +226,8 @@ jobs:
           - 「とりあえず片方」で全ファイルを一括解決しない
           - コンフリクトマーカー (`<<<<<<<`) が残ったままにしない
           - `git merge --abort` を実行しない
+          - `git reset` を実行しない（MERGE_HEAD が消えてマージコミットが作れなくなる）
+          - `.git/MERGE_HEAD` を保持したまま作業すること
           PROMPT
           )" --verbose
         env:
@@ -233,7 +237,10 @@ jobs:
       - name: Commit and push
         run: |
           git add -A
-          if ! git diff --cached --quiet; then
+          # MERGE_HEAD があればマージコミット、なければ通常コミット
+          if [ -f .git/MERGE_HEAD ]; then
+            git commit -m "merge: integrate main into PR branch"
+          elif ! git diff --cached --quiet; then
             git commit -m "fix: resolve merge conflicts"
           fi
           AHEAD=$(git rev-list --count origin/${{ steps.pr.outputs.branch }}..HEAD 2>/dev/null || echo "0")
