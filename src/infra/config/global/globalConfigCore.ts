@@ -19,10 +19,7 @@ import {
   removeMigratedProjectLocalKeys,
   type GlobalMigratedProjectLocalFallback,
 } from './globalMigratedProjectLocalFallback.js';
-import {
-  sanitizeConfigValue,
-  migrateDeprecatedGlobalConfigKeys,
-} from './globalConfigLegacyMigration.js';
+import { sanitizeConfigValue } from './globalConfigLegacyMigration.js';
 import { serializeGlobalConfig } from './globalConfigSerializer.js';
 export { validateCliPath } from './cliPathValidator.js';
 
@@ -81,12 +78,8 @@ export class GlobalConfigManager {
     }
 
     applyGlobalConfigEnvOverrides(rawConfig);
-    const { migratedConfig, migratedLogLevel } = migrateDeprecatedGlobalConfigKeys(rawConfig);
-    const migratedProjectLocalFallback = extractMigratedProjectLocalFallback({
-      ...migratedConfig,
-      ...(migratedLogLevel !== undefined ? { log_level: migratedLogLevel } : {}),
-    });
-    const schemaInput = { ...migratedConfig };
+    const migratedProjectLocalFallback = extractMigratedProjectLocalFallback(rawConfig);
+    const schemaInput = { ...rawConfig };
     removeMigratedProjectLocalKeys(schemaInput);
 
     const parsed = GlobalConfigSchema.parse(schemaInput);
