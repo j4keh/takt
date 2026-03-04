@@ -399,7 +399,7 @@ piece_overrides:
 
     it('should return undefined when runtime is not specified', () => {
       const configPath = join(testDir, '.takt', 'config.yaml');
-      writeFileSync(configPath, 'piece: default\n', 'utf-8');
+      writeFileSync(configPath, '{}\n', 'utf-8');
 
       const loaded = loadProjectConfig(testDir);
       expect(loaded.runtime).toBeUndefined();
