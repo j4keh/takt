@@ -124,6 +124,7 @@ movements:
     knowledge:
       - takt
       - architecture
+      - task-decomposition
     provider_options:
       claude:
         allowed_tools:
